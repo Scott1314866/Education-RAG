@@ -1,0 +1,44 @@
+# 配置文件由 Section(段), Key(键), Value(值) 组成
+# MySQL 配置
+[mysql]
+host = 127.0.0.1
+port = 3307
+user = root
+password = 123456
+database = subjects_kg
+
+# Redis 配置
+[redis]
+host = 127.0.0.1
+port = 6379
+password = 123456
+db = 0
+
+# Milvus 配置
+[milvus]
+host = 127.0.0.1
+port = 19530
+# 数据库需要自己创建
+database_name = itcast
+collection_name = edurag
+
+
+# LLM 配置(以qwen为例)
+[llm]
+model = qwen3.7-plus
+dashscope_api_key = sk-34sdkxxxxxxxxxxxxxxxxxxxxxxxx
+dashscope_base_url = https://dashscope.aliyuncs.com/compatible-mode/v1
+
+# 检索参数配置
+[retrieval]
+parent_chunk_size = 1000
+child_chunk_size = 200
+parent_chunk_overlap = 150
+child_chunk_overlap = 30
+retrieval_k = 5
+candidate_m = 2
+
+# 应用配置
+[app]
+valid_sources = ["ai", "java", "test", "ops", "bigdata"]
+customer_service_phone = 13000000000
