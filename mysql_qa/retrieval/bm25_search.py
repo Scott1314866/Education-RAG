@@ -80,7 +80,7 @@ class BM25Search:
             query_tokens = preprocess_text(query)
             # BM25 计算得分
             scores = self.bm25.get_scores(query_tokens)
-            # 归一化
+            # 归一化 -> 把结果控制在[-1, 1]
             softmax_scores = self._softmax(scores)
             best_idx = softmax_scores.argmax()
             best_score = softmax_scores[best_idx]
