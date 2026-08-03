@@ -1,0 +1,9 @@
+# 这里放置测试样例
+[
+  "input": {
+    "name": "test"
+  },
+  "output": {
+    "name": "test"
+  }
+]
