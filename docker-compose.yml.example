@@ -1,0 +1,34 @@
+services:
+  edurag-app: # 服务名
+    image: egu:v7.5
+    container_name: edurag
+    ports:  # 端口映射
+      - "${APP_PORT:-8080}:8003"
+    environment:
+      # MySQL 配置  这里的主机改成自己的ip地址
+      - MYSQL_HOST=${MYSQL_HOST:-192.168.35.38}
+      - MYSQL_PORT=${MYSQL_PORT:-3307}
+      - MYSQL_USER=${MYSQL_USER:-root}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD:-123456}
+      - MYSQL_DATABASE=${MYSQL_DATABASE:-subjects_kg}
+
+      # Redis 配置
+      - REDIS_HOST=${REDIS_HOST:-192.168.35.38}
+      - REDIS_PORT=${REDIS_PORT:-6379}
+      - REDIS_PASSWORD=${REDIS_PASSWORD:-123456}
+      - REDIS_DB=${REDIS_DB:-0}
+
+      # Milvus 配置
+      - MILVUS_HOST=${MILVUS_HOST:-192.168.35.38}
+      - MILVUS_PORT=${MILVUS_PORT:-19530}
+      - MILVUS_DATABASE_NAME=${MILVUS_DATABASE_NAME:-itcast}
+      - MILVUS_COLLECTION_NAME=${MILVUS_COLLECTION_NAME:-edurag}
+
+      # LLM 配置
+      - DASHSCOPE_API_KEY=${DASHSCOPE_API_KEY:-sk-3a7XXXXXXXX380}
+      - LLM_MODEL=${LLM_MODEL:-deepseek-v4-flash}
+      - DASHSCOPE_BASE_URL=${DASHSCOPE_BASE_URL:-https://api.deepseek.com}
+
+    volumes:
+      - ./logs:/app/logs
+    restart: unless-stopped
